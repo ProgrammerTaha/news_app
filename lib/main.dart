@@ -7,7 +7,7 @@ import 'utilities/app_theme.dart';
 
 /*
 search for question that while debugging the app not found in the mobile when emulate it
-*/ //todo: important to search
+*/ //TODO: important to search
 
 //
 // Naming screens must be according the designs of it, for example when make the first screen which is welcome screen you can name it that or onboarding or walkthrough and it is the screen tha work only once
