@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/nav_menu.dart';
 import '../screens/headline_news.dart';
 import '../screens/home_screen.dart';
+import '../screens/twitter_feeds.dart';
 
 class NavigationDrawer extends StatefulWidget {
   @override
@@ -10,23 +11,22 @@ class NavigationDrawer extends StatefulWidget {
 
 class _NavigationDrawerState extends State<NavigationDrawer> {
   List<NavMenuItem> navigationMenu = [
-    NavMenuItem("Explore", HomeScreen()),
-    NavMenuItem("Headline News", HeadLineNews()),
-    // NavMenuItem("Read Later", ),
-    // NavMenuItem("Videos", ),
-    // NavMenuItem("Photos", ),
-    // NavMenuItem("Setting", ),
-    // NavMenuItem("Logout", ),
-  ];
-
-  List<String> navMenu = [
-    "Explore",
-    "Headline News",
-    "Read Later",
-    "Videos",
-    "Photos",
-    "Setting",
-    "Logout",
+    NavMenuItem(
+      "Explore",
+      () => HomeScreen(),
+    ),
+    NavMenuItem(
+      "Headline News",
+      () => HeadLineNews(),
+    ),
+    NavMenuItem(
+      "Twitter Feeds",
+      () => TwitterFeeds(),
+    ),
+    // NavMenuItem("", ,),
+    // NavMenuItem("", ,),
+    // NavMenuItem("", ,),
+    // NavMenuItem("", ,),
   ];
 
   @override
@@ -57,9 +57,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) {
-                        return navigationMenu[index].destination;
-                      },
+                      builder: (context) => navigationMenu[index].destination(),
                     ),
                   );
                 },

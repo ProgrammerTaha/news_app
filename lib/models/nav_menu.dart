@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
-
 class NavMenuItem {
   String title;
-  Widget destination;
+  Function destination;
   NavMenuItem(
     this.title,
     this.destination,
