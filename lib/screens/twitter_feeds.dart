@@ -47,63 +47,91 @@ class _TwitterFeedsState extends State<TwitterFeeds> {
         ],
       ),
       body: ListView.builder(
-        itemCount: 20,
-        itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding: EdgeInsets.only(
-              left: 8,
-              right: 8,
-              top: 5,
-              bottom: 5,
-            ),
-            child: Card(
-              child: Column(
-                children: [
-                  _authorRow(
-                    "assets/images/1.jpg",
-                    "Christina Meyers",
-                    "@ch_meyers",
-                    "Fri, 12 May 2017",
-                    "14.30",
-                  ),
-                  _sentenceRow(
-                    "We also talk about the future of work as the robots advance, and we ask whether a retro phone",
-                  ),
-                  _rowDevider(),
-                  _iconsRow(),
-                ],
-              ),
-            ),
-          );
-        },
-      ),
+          itemCount: 10,
+          itemBuilder: (BuildContext context, int index) {
+            return Column(
+              children: [
+                _newCard(
+                  "assets/images/1.jpg",
+                  "Christina Meyers",
+                  "@ch_meyers",
+                  "Fri, 12 May 2017",
+                  "14.30",
+                  "We also talk about the future of work as the robots advance, and we ask whether a retro phone",
+                ),
+                _newCard(
+                  "assets/images/1.jpg",
+                  "Christina Meyers",
+                  "@ch_meyers",
+                  "Fri, 12 May 2017",
+                  "14.30",
+                  "We also talk about the future of work as the robots advance, and we ask whether a retro phone",
+                ),
+                _newCard(
+                  "assets/images/1.jpg",
+                  "Christina Meyers",
+                  "@ch_meyers",
+                  "Fri, 12 May 2017",
+                  "14.30",
+                  "We also talk about the future of work as the robots advance, and we ask whether a retro phone",
+                ),
+              ],
+            );
+          }),
       drawer: NavigationDrawer(),
     );
   }
 
-  Widget _authorRow(
+  Widget _newCard(
     String image,
     String author,
     String idName,
     String date,
     String hour,
+    String description,
   ) {
+    return Padding(
+      padding: EdgeInsets.only(
+        left: 8,
+        right: 8,
+        top: 5,
+        bottom: 5,
+      ),
+      child: Card(
+        child: Column(
+          children: [
+            _card(
+              image,
+              author,
+              idName,
+              date,
+              hour,
+              description,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _card(
+    String img,
+    String ath,
+    String id,
+    String dt,
+    String hr,
+    String dsp,
+  ) {
+    Color color = _getRandomColor();
     return Padding(
       padding: EdgeInsets.all(15),
       child: Column(
         children: [
           Row(
             children: [
-              Container(
-                width: 55,
-                height: 55,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: ExactAssetImage(image),
-                    fit: BoxFit.cover,
-                  ),
-                  shape: BoxShape.circle,
-                ),
+              CircleAvatar(
+                backgroundImage: ExactAssetImage(image),
+                radius: 25,
               ),
               Column(
                 children: [
@@ -149,15 +177,12 @@ class _TwitterFeedsState extends State<TwitterFeeds> {
                             fontSize: 16,
                           ),
                         ),
-                        Transform.translate(
-                          offset: Offset(0, -6),
-                          child: Text(
-                            " . ",
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 22,
-                            ),
+                        Text(
+                          " · ",
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
                           ),
                         ),
                         Text(
@@ -174,89 +199,70 @@ class _TwitterFeedsState extends State<TwitterFeeds> {
               ),
             ],
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget _sentenceRow(
-    String description,
-  ) {
-    return Padding(
-      padding: EdgeInsets.only(
-        left: 7,
-        right: 10,
-        top: 12,
-        bottom: 18,
-      ),
-      child: Text(
-        description,
-        style: TextStyle(
-          fontSize: 16,
-        ),
-      ),
-    );
-  }
-
-  Widget _rowDevider() {
-    return Container(
-      height: 1,
-      width: double.infinity,
-      color: Colors.grey.shade300,
-    );
-  }
-
-  Widget _iconsRow() {
-    Color color = _getRandomColor();
-    return Padding(
-      padding: const EdgeInsets.only(
-        right: 10,
-        left: 14,
-        top: 10,
-        bottom: 10,
-      ),
-      child: Row(
-        children: [
-          Row(
-            children: [
-              Icon(
-                Icons.ac_unit,
-                color: color,
-                size: 35,
+          Padding(
+            padding: EdgeInsets.only(
+              left: 3,
+              right: 7,
+              top: 15,
+              bottom: 15,
+            ),
+            child: Text(
+              description,
+              style: TextStyle(
+                fontSize: 15,
               ),
-              Text(
-                "25",
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 17,
-                ),
-              ),
-            ],
+            ),
           ),
-          SizedBox(
-            width: 130,
+          Container(
+            height: 1,
+            width: double.infinity,
+            color: Colors.grey.shade300,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              FlatButton(
-                child: Text(
-                  "SHARE",
-                  style: TextStyle(
-                    color: color,
-                    fontSize: 18,
+              Row(
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      Icons.repeat,
+                      color: color,
+                      size: 35,
+                    ),
+                    onPressed: () {},
                   ),
-                ),
-                onPressed: () {},
+                  Text(
+                    "25",
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 17,
+                    ),
+                  ),
+                ],
               ),
-              FlatButton(
-                child: Text(
-                  "OPEN",
-                  style: TextStyle(
-                    color: color,
-                    fontSize: 18,
+              Row(
+                children: [
+                  FlatButton(
+                    child: Text(
+                      "SHARE",
+                      style: TextStyle(
+                        color: color,
+                        fontSize: 18,
+                      ),
+                    ),
+                    onPressed: () {},
                   ),
-                ),
-                onPressed: () {},
+                  FlatButton(
+                    child: Text(
+                      "OPEN",
+                      style: TextStyle(
+                        color: color,
+                        fontSize: 18,
+                      ),
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
               ),
             ],
           ),
