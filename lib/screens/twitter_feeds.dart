@@ -60,17 +60,17 @@ class _TwitterFeedsState extends State<TwitterFeeds> {
                   "We also talk about the future of work as the robots advance, and we ask whether a retro phone",
                 ),
                 _newCard(
-                  "assets/images/1.jpg",
-                  "Christina Meyers",
-                  "@ch_meyers",
+                  "assets/images/3.jpg",
+                  "Thomas Montgomery",
+                  "@thomas",
                   "Fri, 12 May 2017",
                   "14.30",
                   "We also talk about the future of work as the robots advance, and we ask whether a retro phone",
                 ),
                 _newCard(
-                  "assets/images/1.jpg",
-                  "Christina Meyers",
-                  "@ch_meyers",
+                  "assets/images/8.jpg",
+                  "Jared Adams",
+                  "@AdamsJared",
                   "Fri, 12 May 2017",
                   "14.30",
                   "We also talk about the future of work as the robots advance, and we ask whether a retro phone",
@@ -130,7 +130,7 @@ class _TwitterFeedsState extends State<TwitterFeeds> {
           Row(
             children: [
               CircleAvatar(
-                backgroundImage: ExactAssetImage(image),
+                backgroundImage: ExactAssetImage(img),
                 radius: 25,
               ),
               Column(
@@ -142,7 +142,7 @@ class _TwitterFeedsState extends State<TwitterFeeds> {
                     child: Row(
                       children: [
                         Text(
-                          author,
+                          ath,
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 18,
@@ -153,7 +153,7 @@ class _TwitterFeedsState extends State<TwitterFeeds> {
                             left: 4,
                           ),
                           child: Text(
-                            idName,
+                            id,
                             style: TextStyle(
                               color: Colors.grey,
                               fontSize: 18,
@@ -171,7 +171,7 @@ class _TwitterFeedsState extends State<TwitterFeeds> {
                     child: Row(
                       children: [
                         Text(
-                          date,
+                          dt,
                           style: TextStyle(
                             color: Colors.grey.shade600,
                             fontSize: 16,
@@ -186,7 +186,7 @@ class _TwitterFeedsState extends State<TwitterFeeds> {
                           ),
                         ),
                         Text(
-                          hour,
+                          hr,
                           style: TextStyle(
                             color: Colors.grey.shade600,
                             fontSize: 16,
@@ -207,7 +207,7 @@ class _TwitterFeedsState extends State<TwitterFeeds> {
               bottom: 15,
             ),
             child: Text(
-              description,
+              dsp,
               style: TextStyle(
                 fontSize: 15,
               ),
