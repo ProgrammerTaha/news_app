@@ -17,6 +17,8 @@ class HomeScreen extends StatefulWidget {
 // so createState force me to create a new copy of homescreenState class so homescreen can follow the state through extending from the state that have special properties allow it to follow the state
 }
 
+enum PopOutMenu { HELP, ABOUT, CONTACT, SETTINGS }
+
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   //to extend from more than 1 class we use with keyword
@@ -50,8 +52,11 @@ class _HomeScreenState extends State<HomeScreen>
         ),
         centerTitle: false,
         actions: [
-          IconButton(icon: Icon(Icons.search), onPressed: () {}),
-          IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {},
+          ),
+          _popOutMenu(context),
         ],
         bottom: TabBar(
           indicatorColor: Colors.white,
@@ -82,6 +87,42 @@ class _HomeScreenState extends State<HomeScreen>
         ),
       ),
       drawer: NavigationDrawer(),
+    );
+  }
+
+  Widget _popOutMenu(BuildContext context) {
+    return PopupMenuButton<PopOutMenu>(
+      itemBuilder: (context) {
+        return [
+          PopupMenuItem(
+            child: Text(
+              "About",
+            ),
+            value: PopOutMenu.ABOUT,
+          ),
+          PopupMenuItem(
+            child: Text(
+              "Help",
+            ),
+            value: PopOutMenu.HELP,
+          ),
+          PopupMenuItem(
+            child: Text(
+              "Contact",
+            ),
+            value: PopOutMenu.CONTACT,
+          ),
+          PopupMenuItem(
+            child: Text(
+              "Setings",
+            ),
+            value: PopOutMenu.SETTINGS,
+          ),
+        ];
+      },
+      onSelected: (PopOutMenu menu) {},
+      icon: Icon(Icons.more_vert),
+      offset: Offset(0,300),
     );
   }
 }
