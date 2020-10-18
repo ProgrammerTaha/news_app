@@ -47,6 +47,7 @@ class _TwitterFeedsState extends State<TwitterFeeds> {
         ],
       ),
       body: ListView.builder(
+          padding: EdgeInsets.all(10),
           itemCount: 10,
           itemBuilder: (BuildContext context, int index) {
             return Column(
@@ -90,183 +91,153 @@ class _TwitterFeedsState extends State<TwitterFeeds> {
     String hour,
     String description,
   ) {
-    return Padding(
-      padding: EdgeInsets.only(
-        left: 8,
-        right: 8,
-        top: 5,
-        bottom: 5,
-      ),
-      child: Card(
+    Color color = _getRandomColor();
+    return Card(
+      child: Padding(
+        padding: EdgeInsets.all(15),
         child: Column(
           children: [
-            _card(
-              image,
-              author,
-              idName,
-              date,
-              hour,
-              description,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _card(
-    String img,
-    String ath,
-    String id,
-    String dt,
-    String hr,
-    String dsp,
-  ) {
-    Color color = _getRandomColor();
-    return Padding(
-      padding: EdgeInsets.all(15),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              CircleAvatar(
-                backgroundImage: ExactAssetImage(img),
-                radius: 25,
-              ),
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 13,
-                    ),
-                    child: Row(
-                      children: [
-                        Text(
-                          ath,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 4,
-                          ),
-                          child: Text(
-                            id,
+            Row(
+              children: [
+                CircleAvatar(
+                  backgroundImage: ExactAssetImage(image),
+                  radius: 25,
+                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 13,
+                      ),
+                      child: Row(
+                        children: [
+                          Text(
+                            author,
                             style: TextStyle(
-                              color: Colors.grey,
+                              color: Colors.black,
                               fontSize: 18,
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Transform.translate(
-                    offset: Offset(
-                      -21,
-                      6,
-                    ),
-                    child: Row(
-                      children: [
-                        Text(
-                          dt,
-                          style: TextStyle(
-                            color: Colors.grey.shade600,
-                            fontSize: 16,
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 4,
+                            ),
+                            child: Text(
+                              idName,
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 18,
+                              ),
+                            ),
                           ),
-                        ),
-                        Text(
-                          " · ",
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                          ),
-                        ),
-                        Text(
-                          hr,
-                          style: TextStyle(
-                            color: Colors.grey.shade600,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: 3,
-              right: 7,
-              top: 15,
-              bottom: 15,
-            ),
-            child: Text(
-              dsp,
-              style: TextStyle(
-                fontSize: 15,
-              ),
-            ),
-          ),
-          Container(
-            height: 1,
-            width: double.infinity,
-            color: Colors.grey.shade300,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.repeat,
-                      color: color,
-                      size: 35,
-                    ),
-                    onPressed: () {},
-                  ),
-                  Text(
-                    "25",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 17,
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  FlatButton(
-                    child: Text(
-                      "SHARE",
-                      style: TextStyle(
-                        color: color,
-                        fontSize: 18,
+                        ],
                       ),
                     ),
-                    onPressed: () {},
-                  ),
-                  FlatButton(
-                    child: Text(
-                      "OPEN",
-                      style: TextStyle(
-                        color: color,
-                        fontSize: 18,
+                    Transform.translate(
+                      offset: Offset(
+                        -21,
+                        6,
+                      ),
+                      child: Row(
+                        children: [
+                          Text(
+                            date,
+                            style: TextStyle(
+                              color: Colors.grey.shade600,
+                              fontSize: 16,
+                            ),
+                          ),
+                          Text(
+                            " · ",
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22,
+                            ),
+                          ),
+                          Text(
+                            hour,
+                            style: TextStyle(
+                              color: Colors.grey.shade600,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    onPressed: () {},
-                  ),
-                ],
+                  ],
+                ),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                left: 3,
+                right: 7,
+                top: 15,
+                bottom: 15,
               ),
-            ],
-          ),
-        ],
+              child: Text(
+                description,
+                style: TextStyle(
+                  fontSize: 15,
+                ),
+              ),
+            ),
+            Container(
+              height: 1,
+              width: double.infinity,
+              color: Colors.grey.shade300,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.repeat,
+                        color: color,
+                        size: 35,
+                      ),
+                      onPressed: () {},
+                    ),
+                    Text(
+                      "25",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 17,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    FlatButton(
+                      child: Text(
+                        "SHARE",
+                        style: TextStyle(
+                          color: color,
+                          fontSize: 18,
+                        ),
+                      ),
+                      onPressed: () {},
+                    ),
+                    FlatButton(
+                      child: Text(
+                        "OPEN",
+                        style: TextStyle(
+                          color: color,
+                          fontSize: 18,
+                        ),
+                      ),
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/screens/instgram_feeds.dart';
 import '../models/nav_menu.dart';
 import '../screens/headline_news.dart';
 import '../screens/home_screen.dart';
@@ -23,7 +24,10 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
       "Twitter Feeds",
       () => TwitterFeeds(),
     ),
-    // NavMenuItem("", ,),
+    NavMenuItem(
+      "Instgram Feeds",
+      () => InstgramFeeds(),
+    ),
     // NavMenuItem("", ,),
     // NavMenuItem("", ,),
     // NavMenuItem("", ,),
